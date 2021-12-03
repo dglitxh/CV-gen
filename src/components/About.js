@@ -1,5 +1,5 @@
 import { Component } from "react";
-import App from "../App";
+import uniqid from "uniqid"
 
 class About extends Component{
     constructor(props){
@@ -10,6 +10,7 @@ class About extends Component{
                 address: '',
                 phone: '',
                 email: '', 
+                id: uniqid()
             }
         this.about_list = []
 
@@ -26,19 +27,9 @@ class About extends Component{
     
     handleSubmit = (e) => {
         e.preventDefault();
-        this.setState({
-            // might change push to concat later
-            about_list: this.about_list[0] = (this.state),
-            // name_: '',
-            // age: '',
-            // address: '',
-            // phone: '',
-            // email: ''
-        })
+        this.props.saveAbout(this.state)
         
         console.log(this.state)
-        console.log(this.about_list)
-        
     }
 
     
@@ -107,7 +98,6 @@ class About extends Component{
                     <h3> {this.state.phone}</h3>
                     <h3> {this.state.email}</h3>
                 </div>
-                <App about_list={this.about_list}/>
             </div>
             
         )

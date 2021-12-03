@@ -1,4 +1,5 @@
 import { Component } from "react";
+import uniqid from 'uniqid'
 
 class Experience extends Component{
     constructor(props){
@@ -9,6 +10,7 @@ class Experience extends Component{
                 from: '',
                 to: '',
                 tasks: '',
+                id: uniqid()
             }
     }
     
@@ -24,15 +26,7 @@ class Experience extends Component{
 
     handleSubmit = (e) => {
         e.preventDefault();
-        this.setState({
-            // might change push to concat later
-         experience_list: this.experience_list.push(this.state),
-            // place: '',
-            // position: '',
-            // from: '',
-            // to: '',
-            // tasks: ''
-        })
+        this.props.saveExp(this.state)
         console.log(this.state)
         console.log(this.experience_list)
         

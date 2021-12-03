@@ -1,15 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import About from './components/About'
-import Education from './components/Education';
-import Experience from './components/Experience';
-
+import App from "./App"
 
 ReactDOM.render(
   <React.StrictMode>
-    <About />
-    <Experience />
-    <Education />
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );

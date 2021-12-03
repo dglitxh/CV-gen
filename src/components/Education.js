@@ -1,4 +1,5 @@
 import { Component } from "react";
+import uniqid from "uniqid"
 
 class Education extends Component{
     constructor(props){
@@ -8,6 +9,7 @@ class Education extends Component{
                 program: '',
                 from: '',
                 to: '',
+                id: uniqid()
             }
     }
     
@@ -23,15 +25,7 @@ class Education extends Component{
 
     handleSubmit = (e) => {
         e.preventDefault();
-        this.setState({
-            // might change push to concat later
-         education_list: this.education_list.push(this.state),
-            // place: '',
-            // program: '',
-            // from: '',
-            // to: '',
-            // tasks: ''
-        })
+        this.props.saveEdu(this.state)
         console.log(this.state)
         console.log(this.education_list)
         
