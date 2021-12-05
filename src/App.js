@@ -3,6 +3,7 @@ import { useState } from "react/cjs/react.development";
 import About from "./components/About";
 import Education from "./components/Education";
 import Experience from "./components/Experience";
+import Display from "./components/Display"
 
 const App = (props) => {
   let [about, setAbout] = useState([])
@@ -33,6 +34,10 @@ const App = (props) => {
        <About saveAbout={saveAbout} />
        <Education saveEdu={saveEdu} />
        <Experience saveExp={saveExp} />
+       <Display entries={about}/>
+       <Display entries={edu}/>
+       <Display entries={exp}/>
+
     </div>
   )
 

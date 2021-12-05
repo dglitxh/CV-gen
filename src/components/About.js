@@ -91,13 +91,6 @@ class About extends Component{
 
                     <button type='submit' className='button'>Add</button>
                 </form>
-                <div id="preview">
-                    <h3> {this.state.name_}</h3>
-                    <h2> {this.state.age}</h2>
-                    <h3> {this.state.address}</h3>
-                    <h3> {this.state.phone}</h3>
-                    <h3> {this.state.email}</h3>
-                </div>
             </div>
             
         )

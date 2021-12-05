@@ -86,16 +86,8 @@ class Experience extends Component{
                         placeholder='tasks'  
                     ></textarea>
                     <br/><br/>
-
                     <button type='submit' className='button'>Add</button>
                 </form>
-                <div id="preview">
-                    <h3> {this.state.place}</h3>
-                    <h2> {this.state.position}</h2>
-                    <h3> {this.state.from}</h3>
-                    <h3> {this.state.to}</h3>
-                    <h3> {this.state.tasks}</h3>
-                </div>
             </div>
         )
     }
