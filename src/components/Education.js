@@ -33,7 +33,7 @@ class Education extends Component{
         return(
             <div>
                 <h1 class="text-3xl font-bold leading-7 text-center ">Education</h1>
-            <form onSubmit={this.handleSubmit} class="w-full max-w-lg">
+            <form onSubmit={this.handleSubmit} class="w-full">
             <div class="flex flex-wrap -mx-3 mb-6">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
@@ -45,7 +45,8 @@ class Education extends Component{
                     type="text" 
                     placeholder="School"
                     onChange={this.handleChange}
-                    name='School'
+                    name='school'
+                    required
                     value={this.state.school}/>
             </div>
             <div class="w-full md:w-1/2 px-3">
@@ -60,6 +61,7 @@ class Education extends Component{
                     placeholder="Program"
                     onChange={this.handleChange}
                     name='program'
+                    required
                     value={this.state.program}/>
             </div>
         </div>
@@ -76,6 +78,7 @@ class Education extends Component{
                     placeholder="Start Date"
                     onChange={this.handleChange}
                     name='startDate'
+                    required
                     value={this.state.startDate}/>
             </div>
             <div class="w-full md:w-1/2 px-3">

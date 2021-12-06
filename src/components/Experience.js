@@ -35,7 +35,7 @@ class Experience extends Component{
         return(
             <div>
                 <h1 class="text-3xl font-bold leading-7 text-center" >Experience</h1>
-            <form onSubmit={this.handleSubmit} class="w-full max-w-lg">
+            <form onSubmit={this.handleSubmit} class="w-full ">
             <div class="flex flex-wrap -mx-3 mb-6">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
@@ -48,6 +48,7 @@ class Experience extends Component{
                     placeholder="School"
                     onChange={this.handleChange}
                     name='workplace'
+                    required
                     value={this.state.workplace}/>
             </div>
             <div class="w-full md:w-1/2 px-3">
@@ -62,6 +63,7 @@ class Experience extends Component{
                     placeholder="position"
                     onChange={this.handleChange}
                     name='position'
+                    required
                     value={this.state.position}/>
             </div>
         </div>
@@ -78,6 +80,7 @@ class Experience extends Component{
                     placeholder="Start Date"
                     onChange={this.handleChange}
                     name='startDate'
+                    required
                     value={this.state.startDate}/>
             </div>
             <div class="w-full md:w-1/2 px-3">
@@ -95,10 +98,11 @@ class Experience extends Component{
                     value={this.state.endDate}/>
             </div>
         </div>
-        </form>
         <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
               Save
             </button>
+        </form>
+        
         <br></br>
         <br></br>
     </div>

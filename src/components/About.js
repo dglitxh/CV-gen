@@ -35,8 +35,8 @@ class About extends Component{
     render(){
         return(
             <div>
-                <h2 class="text-3xl font-bold leading-7 text-center" >Personal Info</h2>
-                <form onSubmit={this.handleSubmit} class="w-full max-w-lg">
+                <h1 class="text-3xl font-bold leading-7 text-center" >Personal Info</h1>
+                <form onSubmit={this.handleSubmit} class="w-full">
                     <div class="flex flex-wrap -mx-3 mb-6">
                     <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
@@ -49,6 +49,7 @@ class About extends Component{
                             placeholder="First Name"
                             onChange={this.handleChange}
                             name='firstName'
+                            required
                             value={this.state.firstName}/>
                     </div>
                     <div class="w-full md:w-1/2 px-3">
@@ -63,6 +64,7 @@ class About extends Component{
                             placeholder="Last Name"
                             onChange={this.handleChange}
                             name='lastName'
+                            required
                             value={this.state.lastName}/>
                     </div>
                 </div>
@@ -78,6 +80,7 @@ class About extends Component{
                             placeholder="Address"
                             onChange={this.handleChange}
                             name='address'
+                            required
                             value={this.state.address}/>
                     </div>
                 </div>
@@ -95,6 +98,7 @@ class About extends Component{
                             placeholder="age"
                             onChange={this.handleChange}
                             name='age'
+                            required
                             value={this.state.age}/>
                     </div>
 
@@ -109,6 +113,7 @@ class About extends Component{
                             placeholder="Phone"
                             onChange={this.handleChange}
                             name='phone'
+                            required
                             value={this.state.phone}/>
                     </div>
                   
@@ -124,6 +129,7 @@ class About extends Component{
                             placeholder="example@gmail.com"
                             onChange={this.handleChange}
                             name='email'
+                            required
                             value={this.state.email}/>
                     </div>
                 </div>

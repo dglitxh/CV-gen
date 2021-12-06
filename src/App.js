@@ -27,14 +27,18 @@ const App = (props) => {
   }
 
   return(
-    <div className="px-8 py-12 max-w-md mx-auto sm:max-w-xl lg:max-w-full lg:w-1/2 lg:py-24 lg:px-12">
+    <div>
+    <div className=" w-full bg-gray-800  px-8 py-12 max-w-md mx-auto sm:max-w-xl lg:max-w-full lg:w-1/2 lg:py-24 lg:px-12 pb-6">
        <About saveAbout={saveAbout} />
        <Education saveEdu={saveEdu} />
        <Experience saveExp={saveExp} />
+       </div>
+       <div id="cv" className="px-8 py-12 max-w-md mx-auto sm:max-w-xl lg:max-w-full lg:w-1/2 lg:py-24 lg:px-12 pb-6">
        <Display entries={about} name={'Personal'}/>
        <Display entries={edu} name={'Education'}/>
        <Display entries={exp} name={'Experience'}/>
 
+    </div>
     </div>
   )
 
