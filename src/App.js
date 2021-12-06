@@ -26,17 +26,14 @@ const App = (props) => {
     setExp(newEntry)
   }
 
-  console.log(about)
-  console.log(edu)
-  console.log(exp)
   return(
-    <div>
+    <div className="px-8 py-12 max-w-md mx-auto sm:max-w-xl lg:max-w-full lg:w-1/2 lg:py-24 lg:px-12">
        <About saveAbout={saveAbout} />
        <Education saveEdu={saveEdu} />
        <Experience saveExp={saveExp} />
-       <Display entries={about}/>
-       <Display entries={edu}/>
-       <Display entries={exp}/>
+       <Display entries={about} name={'Personal'}/>
+       <Display entries={edu} name={'Education'}/>
+       <Display entries={exp} name={'Experience'}/>
 
     </div>
   )
