@@ -20,7 +20,7 @@ const Display = (props) => {
       </div>
     )
       }else{
-        console.log('not working son')
+        console.log('there is a problem with the display component')
         return <div></div>
       }
   }

@@ -15,7 +15,6 @@ class About extends Component{
             }
     }
     
-
     handleChange = (e) => {
         const tag = e.target.name
         const value = e.target.value
@@ -31,7 +30,6 @@ class About extends Component{
         console.log(this.state)
     }
 
-    
     render(){
         return(
             <div>
