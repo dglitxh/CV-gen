@@ -4,13 +4,15 @@ import uniqid from "uniqid"
 class Education extends Component{
     constructor(props){
         super(props);
-        this.state = {
+        this.InitialState = {
                 school: '',
                 program: '',
                 startDate: '',
                 endDate: '',
                 id: uniqid()
             }
+
+        this.state = this.InitialState
     }
     
  education_list = []
@@ -26,7 +28,8 @@ class Education extends Component{
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.saveEdu(this.state)
-        console.log(this.state)   
+        console.log(this.state)
+        this.setState(this.InitialState)   
     }
 
     render(){

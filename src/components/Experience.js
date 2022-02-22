@@ -4,7 +4,7 @@ import uniqid from 'uniqid'
 class Experience extends Component{
     constructor(props){
         super(props);
-        this.state = {
+        this.InitialState = {
                 workplace: '',
                 position: '',
                 startDate: '',
@@ -12,6 +12,7 @@ class Experience extends Component{
                 tasks: '',
                 id: uniqid()
             }
+        this.state = this.InitialState
     }
     
     experience_list = []

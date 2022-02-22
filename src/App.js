@@ -4,6 +4,10 @@ import About from "./components/About";
 import Education from "./components/Education";
 import Experience from "./components/Experience";
 import Display from "./components/Display"
+import { Steps, Button, message } from 'antd';
+
+const { Step } = Steps;
+
 
 const App = (props) => {
   let [about, setAbout] = useState([])
@@ -26,12 +30,64 @@ const App = (props) => {
     setExp(newEntry)
   }
 
+  const [current, setCurrent] = React.useState(0);
+
+  const next = () => {
+    setCurrent(current + 1);
+  };
+
+  const prev = () => {
+    setCurrent(current - 1);
+  };
+
+  const onChange = () => {
+    setCurrent(current)
+  }
+
+  const steps = [
+    {
+      title: 'First',
+      id: 1,
+      content: () => {return <About saveAbout={saveAbout} />},
+    },
+    {
+      title: 'Second',
+      id: 2,
+      content: () => {return <Education saveAbout={saveEdu} />},
+    },
+    {
+      title: 'Last',
+      id: 3,
+      content: () => {return <Experience saveAbout={saveExp} />},
+    },
+  ];
+  
   return(
     <div>
-    <div className=" w-full bg-gray-800  px-8 py-12 max-w-md mx-auto sm:max-w-xl lg:max-w-full lg:w-1/2 lg:py-24 lg:px-12 pb-6">
-       <About saveAbout={saveAbout} />
-       <Education saveEdu={saveEdu} />
-       <Experience saveExp={saveExp} />
+    <div className=" w-full  px-8 py-12 max-w-md mx-auto sm:max-w-xl lg:max-w-full lg:w-1/2 lg:py-24 lg:px-12 pb-6">
+       <Steps current={current} >
+        {steps.map(item => (
+          <Step key={item.id} title={item.title} onChange={onChange}/>
+        ))}
+      </Steps>
+      <div className="steps-content">{steps[current].content()}</div>
+      <div className="steps-action step-buttons">
+        {current < steps.length - 1 && (
+          <Button className="" type="primary" onClick={() => next()}>
+            Next
+          </Button>
+        )}
+        {current === steps.length - 1 && (
+          <Button type="primary" onClick={() => message.success('Processing complete!')}>
+            Done
+          </Button>
+        )}
+        {current > 0 && (
+          <Button style={{ margin: '0 8px' }} onClick={() => prev()}>
+            Previous
+          </Button>
+        )}
+      </div>
        </div>
        <div id="cv" className="px-8 py-12 max-w-md mx-auto sm:max-w-xl lg:max-w-full lg:w-1/2 lg:py-24 lg:px-12 pb-6">
        <Display entries={about} name={'Personal'}/>

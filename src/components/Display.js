@@ -5,7 +5,7 @@ const Display = (props) => {
     if( entries){
     return(
       <div className="abouted">
-        <h1>{name}</h1>
+        <h1 className="mt-4">{name}</h1>
         {entries.map((entry) => {
           console.log(entry)
             return (
@@ -17,6 +17,7 @@ const Display = (props) => {
             
             )
         })}
+        
       </div>
     )
       }else{
