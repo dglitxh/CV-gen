@@ -5,6 +5,16 @@ import Education from "./components/Education";
 import Experience from "./components/Experience";
 import Display from "./components/Display"
 import { Steps, Button, message } from 'antd';
+import { Layout, Menu } from 'antd';
+import {
+  MenuUnfoldOutlined,
+  MenuFoldOutlined,
+  UserOutlined,
+  VideoCameraOutlined,
+  UploadOutlined,
+} from '@ant-design/icons';
+const { Header, Sider, Content } = Layout;
+
 
 const { Step } = Steps;
 
@@ -13,6 +23,8 @@ const App = (props) => {
   let [about, setAbout] = useState([])
   let [edu, setEdu] = useState([])
   let [exp, setExp] = useState([])
+  const [current, setCurrent] = React.useState(0);
+  let [collapsed, setCollapsed] = useState(false)
 
 
   const saveAbout = (item) => {
@@ -30,7 +42,9 @@ const App = (props) => {
     setExp(newEntry)
   }
 
-  const [current, setCurrent] = React.useState(0);
+  const toggle = () => {
+    setCollapsed(!collapsed)
+  }
 
   const next = () => {
     setCurrent(current + 1);
@@ -64,7 +78,38 @@ const App = (props) => {
   
   return(
     <div>
-    <div className=" w-full  px-8 py-12 max-w-md mx-auto sm:max-w-xl lg:max-w-full lg:w-1/2 lg:py-24 lg:px-12 pb-6">
+      <Layout>
+        <Sider trigger={null} collapsible collapsed={collapsed}>
+          <div className="logo" />
+          Resume
+          <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
+            <Menu.Item key="1" icon={<UserOutlined />}>
+              nav 1
+            </Menu.Item>
+            <Menu.Item key="2" icon={<VideoCameraOutlined />}>
+              nav 2
+            </Menu.Item>
+            <Menu.Item key="3" icon={<UploadOutlined />}>
+              nav 3
+            </Menu.Item>
+          </Menu>
+        </Sider>
+        <Layout className="site-layout">
+          <Header className="site-layout-background" style={{ padding: 0, margin: '1%' }}>
+            {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
+              className: 'trigger',
+              onClick: toggle,
+            })}
+          </Header>
+          <Content
+            className="site-layout-background"
+            style={{
+              margin: '24px 16px',
+              padding: 24,
+              minHeight: 280,
+            }}
+          >
+           <div className=" w-full  px-8 py-12 max-w-md mx-auto sm:max-w-xl lg:max-w-full lg:w-1/2 lg:py-24 lg:px-12 pb-6">
        <Steps current={current} onChange={onChange}>
         {steps.map(item => (
           <Step key={item.id} title={item.title} />
@@ -95,6 +140,11 @@ const App = (props) => {
        <Display entries={exp} name={'Experience'}/>
 
     </div>
+          </Content>
+        </Layout>
+      </Layout>
+  
+    
     </div>
   )
 
