@@ -45,7 +45,7 @@ export const ExpDisplay = (props) => {
 
 
   export const AboutDisplay = (props) => {
-      const { entries, name } = props;
+      const { entries } = props;
       if(entries.length > 0){
       return(
         <div className="abouted">
