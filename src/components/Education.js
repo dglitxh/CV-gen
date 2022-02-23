@@ -9,27 +9,29 @@ class Education extends Component{
                 program: '',
                 startDate: '',
                 endDate: '',
-                id: uniqid()
+                id: ''
             }
 
         this.state = this.InitialState
     }
-    
+
  education_list = []
 
     handleChange = (e) => {
         const tag = e.target.name
         const value = e.target.value
         this.setState({
-                [tag]: value, 
+                [tag]: value,
         });
     }
 
     handleSubmit = (e) => {
         e.preventDefault();
-        this.props.saveEdu(this.state)
+        let edu = this.state
+        edu['id'] = uniqid()
+        this.props.saveEdu(edu)
         console.log(this.state)
-        this.setState(this.InitialState)   
+        this.setState(this.InitialState)
     }
 
     render(){
@@ -42,10 +44,10 @@ class Education extends Component{
             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                 School Name
             </label>
-            <input className="appearance-none block w-full bg-gray-200 text-gray-700 
-            border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" 
-                    id="grid-first-name" 
-                    type="text" 
+            <input className="appearance-none block w-full bg-gray-200 text-gray-700
+            border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                    id="grid-first-name"
+                    type="text"
                     placeholder="School"
                     onChange={this.handleChange}
                     name='school'
@@ -56,11 +58,11 @@ class Education extends Component{
             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                 Program of study
             </label>
-            <input className="appearance-none block w-full bg-gray-200 text-gray-700 border 
-            border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none 
-            focus:bg-white focus:border-gray-500" 
-                    id="grid-last-name" 
-                    type="text" 
+            <input className="appearance-none block w-full bg-gray-200 text-gray-700 border
+            border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none
+            focus:bg-white focus:border-gray-500"
+                    id="grid-last-name"
+                    type="text"
                     placeholder="Program"
                     onChange={this.handleChange}
                     name='program'
@@ -68,16 +70,16 @@ class Education extends Component{
                     value={this.state.program}/>
             </div>
         </div>
-        
+
         <div className="flex flex-wrap -mx-3 mb-6">
             <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                 Start Date
             </label>
-            <input className="appearance-none block w-full bg-gray-200 text-gray-700 
-            border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" 
-                    id="grid-first-name" 
-                    type="date" 
+            <input className="appearance-none block w-full bg-gray-200 text-gray-700
+            border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                    id="grid-first-name"
+                    type="date"
                     placeholder="Start Date"
                     onChange={this.handleChange}
                     name='startDate'
@@ -88,11 +90,11 @@ class Education extends Component{
             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                 End Date
             </label>
-            <input className="appearance-none block w-full bg-gray-200 text-gray-700 border 
-            border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none 
-            focus:bg-white focus:border-gray-500" 
-                    id="grid-last-name" 
-                    type="date" 
+            <input className="appearance-none block w-full bg-gray-200 text-gray-700 border
+            border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none
+            focus:bg-white focus:border-gray-500"
+                    id="grid-last-name"
+                    type="date"
                     placeholder="End date"
                     onChange={this.handleChange}
                     name='endDate'
@@ -100,7 +102,7 @@ class Education extends Component{
             </div>
         </div>
         <button type="submit" className="inline-flex justify-center my-1 py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-              Save
+              Add
             </button>
         </form>
         <br></br>

@@ -7,26 +7,24 @@ class About extends Component{
         this.state = {
                 firstName: '',
                 lastName: '',
-                address: '',
-                age: '',
                 phone: '',
-                email: '', 
+                email: '',
                 id: uniqid()
             }
     }
-    
+
     handleChange = (e) => {
         const tag = e.target.name
         const value = e.target.value
         this.setState({
-                [tag]: value, 
+                [tag]: value,
         });
     };
-    
+
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.saveAbout(this.state)
-        
+
         console.log(this.state)
     }
 
@@ -40,10 +38,10 @@ class About extends Component{
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                         First Name
                     </label>
-                    <input className="appearance-none block w-full bg-gray-200 text-gray-700 
-                    border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" 
-                            id="grid-first-name" 
-                            type="text" 
+                    <input className="appearance-none block w-full bg-gray-200 text-gray-700
+                    border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                            id="grid-first-name"
+                            type="text"
                             placeholder="First Name"
                             onChange={this.handleChange}
                             name='firstName'
@@ -54,11 +52,11 @@ class About extends Component{
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                         Last Name
                     </label>
-                    <input className="appearance-none block w-full bg-gray-200 text-gray-700 border 
-                    border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none 
-                    focus:bg-white focus:border-gray-500" 
-                            id="grid-last-name" 
-                            type="text" 
+                    <input className="appearance-none block w-full bg-gray-200 text-gray-700 border
+                    border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none
+                    focus:bg-white focus:border-gray-500"
+                            id="grid-last-name"
+                            type="text"
                             placeholder="Last Name"
                             onChange={this.handleChange}
                             name='lastName'
@@ -71,10 +69,10 @@ class About extends Component{
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
                         Address
                     </label>
-                    <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 
-                    rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
-                            id="grid-address" 
-                            type="text" 
+                    <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200
+                    rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                            id="grid-address"
+                            type="text"
                             placeholder="Address"
                             onChange={this.handleChange}
                             name='address'
@@ -82,48 +80,32 @@ class About extends Component{
                             value={this.state.address}/>
                     </div>
                 </div>
-               
-                    
-                    <div className="flex flex-wrap -mx-3 mb-2">
-                    <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                    <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
-                        Age
-                    </label>
-                    <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded 
-                    py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
-                            id="grid-age" 
-                            type="number" 
-                            placeholder="age"
-                            onChange={this.handleChange}
-                            name='age'
-                            required
-                            value={this.state.age}/>
-                    </div>
 
-                    <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                <div className="flex flex-wrap -mx-3 mb-6">
+                <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
-                       Phone 
+                       Phone
                     </label>
-                    <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded 
-                    py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
-                            id="grid-startdate" 
-                            type="phone" 
+                    <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded
+                    py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                            id="grid-startdate"
+                            type="phone"
                             placeholder="Phone"
                             onChange={this.handleChange}
                             name='phone'
                             required
                             value={this.state.phone}/>
                     </div>
-                  
-                    
-                    <div className="w-full md:w-1/3 px-3 mb-4 md:mb-0">
+
+
+                  <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-zip">
                         Email
                     </label>
-                    <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded 
-                    py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
-                            id="grid-enddate" 
-                            type="text" 
+                    <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded
+                    py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                            id="grid-enddate"
+                            type="text"
                             placeholder="example@gmail.com"
                             onChange={this.handleChange}
                             name='email'
@@ -136,10 +118,10 @@ class About extends Component{
             </button>
                 </form>
                 <br></br>
-                
+
             </div>
-            
-            
+
+
         )
     }
 }

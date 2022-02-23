@@ -3,7 +3,7 @@ import { useState } from "react/cjs/react.development";
 import About from "./components/About";
 import Education from "./components/Education";
 import Experience from "./components/Experience";
-import Display from "./components/Display"
+import { EduDisplay, ExpDisplay, AboutDisplay } from "./components/Display"
 import { Steps, Button, message } from 'antd';
 import { Layout, Menu } from 'antd';
 import {
@@ -75,31 +75,29 @@ const App = (props) => {
       content: () => {return <Experience saveExp={saveExp} />},
     },
   ];
-  
+
   return(
     <div>
       <Layout>
         <Sider trigger={null} collapsible collapsed={collapsed}>
           <div className="logo" />
-          Resume
+          <h3 className="text-white text-center mt-3 text-xl">Resume Builder</h3>
           <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
-            <Menu.Item key="1" icon={<UserOutlined />}>
-              nav 1
+            <Menu.Item key="1" icon={<UserOutlined />} >
+              Form
             </Menu.Item>
-            <Menu.Item key="2" icon={<VideoCameraOutlined />}>
-              nav 2
-            </Menu.Item>
-            <Menu.Item key="3" icon={<UploadOutlined />}>
-              nav 3
+            <Menu.Item key="2" icon={<VideoCameraOutlined />} >
+              Preview
             </Menu.Item>
           </Menu>
         </Sider>
         <Layout className="site-layout">
-          <Header className="site-layout-background" style={{ padding: 0, margin: '1%' }}>
+          <Header className="site-layout-background" style={{ 'padding-left': '2%'}}>
             {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
               className: 'trigger',
               onClick: toggle,
             })}
+            <h2 className="text-center text-purple-500"> Fill Form To Build Resume</h2>
           </Header>
           <Content
             className="site-layout-background"
@@ -135,16 +133,16 @@ const App = (props) => {
       </div>
        </div>
        <div id="cv" className="px-8 py-12 max-w-md mx-auto sm:max-w-xl lg:max-w-full lg:w-1/2 lg:py-24 lg:px-12 pb-6">
-       <Display entries={about} name={'Personal'}/>
-       <Display entries={edu} name={'Education'}/>
-       <Display entries={exp} name={'Experience'}/>
+       <AboutDisplay entries={about} />
+       <ExpDisplay entries={exp} name={'Experience'}/>
+       <EduDisplay entries={edu} name={'Education'}/>
 
     </div>
           </Content>
         </Layout>
       </Layout>
-  
-    
+
+
     </div>
   )
 

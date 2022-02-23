@@ -1,5 +1,7 @@
 
-
+#root{
+  font-size: 20px;
+}
 .step-buttons{
     display: flex;
     justify-content: center;
@@ -8,27 +10,38 @@
 
 .form-component{
     margin: 5% auto;
-   
+
 }
 
 #components-layout-demo-custom-trigger .trigger {
     padding-left: 4%;
-    font-size: 120%;
+    font-size: 150%;
     line-height: 64px;
     cursor: pointer;
     transition: color 0.3s;
   }
-  
+
   #components-layout-demo-custom-trigger .trigger:hover {
     color: #1890ff;
   }
-  
+
+  .trigger:hover {
+    color: #1890ff;
+  }
+
   #components-layout-demo-custom-trigger .logo {
     height: 32px;
     margin: 16px;
     background: rgba(255, 255, 255, 0.3);
   }
-  
+
+  .cardhead{
+    display: flex;
+    justify-content: space-between;
+
+
+  }
+
   .site-layout .site-layout-background {
     background: #fff;
   }
