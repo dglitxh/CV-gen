@@ -10,12 +10,11 @@ class Experience extends Component{
                 startDate: '',
                 endDate: '',
                 tasks: '',
-                id: uniqid()
+                id: ''
             }
         this.state = this.InitialState
     }
 
-    experience_list = []
 
     handleChange = (e) => {
         const tag = e.target.name
@@ -27,9 +26,10 @@ class Experience extends Component{
 
     handleSubmit = (e) => {
         e.preventDefault();
-        this.props.saveExp(this.state)
+        let exp = this.state['id'] = uniqid()
+        this.props.saveExp(exp)
         console.log(this.state)
-        console.log(this.experience_list)
+        this.setState(this.InitialState)
 
     }
     render(){

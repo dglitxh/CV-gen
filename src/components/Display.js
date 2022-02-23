@@ -15,10 +15,8 @@ export const ExpDisplay = (props) => {
               <Timeline.Item>
                <Card
                 title=""
-                extra={<div>
-                  <a className="mr-2" href="#"><DeleteOutlined twoToneColor="#eb2f96" /> </a>
-                  <a href="#"><EditOutlined /> </a>
-                  </div>}>
+                actions={[ <EditOutlined/>, <DeleteOutlined/>,]}
+                >
                     <div className='cardhead'>
                       <h5 className="text-2xl ">{`${entry.workplace}`}</h5>
                       <h5>{`${entry.startDate} ${entry.endDate? entry.endDate: 'Current'} `}</h5>
@@ -83,7 +81,8 @@ export const ExpDisplay = (props) => {
                   <Timeline.Item>
                    <Card
                     title=""
-                    actions={[ <EditOutlined/>, <DeleteOutlined/>,]}>
+                    actions={[ <EditOutlined/>, <DeleteOutlined/>,]}
+                    >
                       <div>
                         <div className="cardhead">
                           <h5 className="text-xl">{entry.school}</h5>
