@@ -34,15 +34,15 @@ class Experience extends Component{
     }
     render(){
         return(
-            <div>
-                <h1 class="text-3xl font-bold leading-7 text-center" >Experience</h1>
-            <form onSubmit={this.handleSubmit} class="w-full ">
-            <div class="flex flex-wrap -mx-3 mb-6">
-            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+            <div className="form-component">
+                <h1 className="text-3xl my-5 text-sky-600 heading leading-7" >Experience</h1>
+            <form onSubmit={this.handleSubmit} className="w-full ">
+            <div className="flex flex-wrap -mx-3 mb-6">
+            <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+            <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                 Work Place
             </label>
-            <input class="appearance-none block w-full bg-gray-200 text-gray-700 
+            <input className="appearance-none block w-full bg-gray-200 text-gray-700 
             border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" 
                     id="grid-first-name" 
                     type="text" 
@@ -52,11 +52,11 @@ class Experience extends Component{
                     required
                     value={this.state.workplace}/>
             </div>
-            <div class="w-full md:w-1/2 px-3">
-            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
+            <div className="w-full md:w-1/2 px-3">
+            <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                 position
             </label>
-            <input class="appearance-none block w-full bg-gray-200 text-gray-700 border 
+            <input className="appearance-none block w-full bg-gray-200 text-gray-700 border 
             border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none 
             focus:bg-white focus:border-gray-500" 
                     id="grid-last-name" 
@@ -69,12 +69,12 @@ class Experience extends Component{
             </div>
         </div>
         
-        <div class="flex flex-wrap -mx-3 mb-6">
-            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+        <div className="flex flex-wrap -mx-3 mb-6">
+            <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+            <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                 Start Date
             </label>
-            <input class="appearance-none block w-full bg-gray-200 text-gray-700 
+            <input className="appearance-none block w-full bg-gray-200 text-gray-700 
             border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" 
                     id="grid-first-name" 
                     type="date" 
@@ -84,11 +84,11 @@ class Experience extends Component{
                     required
                     value={this.state.startDate}/>
             </div>
-            <div class="w-full md:w-1/2 px-3">
-            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
+            <div className="w-full md:w-1/2 px-3">
+            <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                 End Date
             </label>
-            <input class="appearance-none block w-full bg-gray-200 text-gray-700 border 
+            <input className="appearance-none block w-full bg-gray-200 text-gray-700 border 
             border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none 
             focus:bg-white focus:border-gray-500" 
                     id="grid-last-name" 
@@ -99,7 +99,7 @@ class Experience extends Component{
                     value={this.state.endDate}/>
             </div>
         </div>
-        <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+        <button type="submit" className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
               Save
             </button>
         </form>

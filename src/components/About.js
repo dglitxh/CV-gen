@@ -32,15 +32,15 @@ class About extends Component{
 
     render(){
         return(
-            <div>
-                <h1 class="text-3xl font-bold leading-7 text-center" >Personal Info</h1>
-                <form onSubmit={this.handleSubmit} class="w-full">
-                    <div class="flex flex-wrap -mx-3 mb-6">
-                    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+            <div className="form-component">
+                <h1 className="text-3xl my-5 text-sky-600 heading leading-7" >Personal Info</h1>
+                <form onSubmit={this.handleSubmit} className="w-full">
+                    <div className="flex flex-wrap -mx-3 mb-6">
+                    <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                    <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                         First Name
                     </label>
-                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 
+                    <input className="appearance-none block w-full bg-gray-200 text-gray-700 
                     border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" 
                             id="grid-first-name" 
                             type="text" 
@@ -50,11 +50,11 @@ class About extends Component{
                             required
                             value={this.state.firstName}/>
                     </div>
-                    <div class="w-full md:w-1/2 px-3">
-                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
+                    <div className="w-full md:w-1/2 px-3">
+                    <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                         Last Name
                     </label>
-                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border 
+                    <input className="appearance-none block w-full bg-gray-200 text-gray-700 border 
                     border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none 
                     focus:bg-white focus:border-gray-500" 
                             id="grid-last-name" 
@@ -66,12 +66,12 @@ class About extends Component{
                             value={this.state.lastName}/>
                     </div>
                 </div>
-                <div class="flex flex-wrap -mx-3 mb-6">
-                    <div class="w-full px-3">
-                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
+                <div className="flex flex-wrap -mx-3 mb-6">
+                    <div className="w-full px-3">
+                    <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
                         Address
                     </label>
-                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 
+                    <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 
                     rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
                             id="grid-address" 
                             type="text" 
@@ -84,12 +84,12 @@ class About extends Component{
                 </div>
                
                     
-                    <div class="flex flex-wrap -mx-3 mb-2">
-                    <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
+                    <div className="flex flex-wrap -mx-3 mb-2">
+                    <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                    <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
                         Age
                     </label>
-                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded 
+                    <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded 
                     py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
                             id="grid-age" 
                             type="number" 
@@ -100,11 +100,11 @@ class About extends Component{
                             value={this.state.age}/>
                     </div>
 
-                    <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
+                    <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                    <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
                        Phone 
                     </label>
-                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded 
+                    <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded 
                     py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
                             id="grid-startdate" 
                             type="phone" 
@@ -116,11 +116,11 @@ class About extends Component{
                     </div>
                   
                     
-                    <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-zip">
+                    <div className="w-full md:w-1/3 px-3 mb-4 md:mb-0">
+                    <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-zip">
                         Email
                     </label>
-                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded 
+                    <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded 
                     py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
                             id="grid-enddate" 
                             type="text" 
@@ -131,7 +131,7 @@ class About extends Component{
                             value={this.state.email}/>
                     </div>
                 </div>
-                <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                <button type="submit" className="inline-flex justify-center mt-2 py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
               Save
             </button>
                 </form>

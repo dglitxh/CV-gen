@@ -40,34 +40,34 @@ const App = (props) => {
     setCurrent(current - 1);
   };
 
-  const onChange = () => {
-    setCurrent(current)
+  const onChange = (id) => {
+    setCurrent(id)
   }
 
   const steps = [
     {
-      title: 'First',
+      title: 'Personal Info',
       id: 1,
       content: () => {return <About saveAbout={saveAbout} />},
     },
     {
-      title: 'Second',
+      title: 'Education',
       id: 2,
-      content: () => {return <Education saveAbout={saveEdu} />},
+      content: () => {return <Education saveEdu={saveEdu} />},
     },
     {
-      title: 'Last',
+      title: 'Experience',
       id: 3,
-      content: () => {return <Experience saveAbout={saveExp} />},
+      content: () => {return <Experience saveExp={saveExp} />},
     },
   ];
   
   return(
     <div>
     <div className=" w-full  px-8 py-12 max-w-md mx-auto sm:max-w-xl lg:max-w-full lg:w-1/2 lg:py-24 lg:px-12 pb-6">
-       <Steps current={current} >
+       <Steps current={current} onChange={onChange}>
         {steps.map(item => (
-          <Step key={item.id} title={item.title} onChange={onChange}/>
+          <Step key={item.id} title={item.title} />
         ))}
       </Steps>
       <div className="steps-content">{steps[current].content()}</div>
