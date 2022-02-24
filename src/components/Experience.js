@@ -26,7 +26,7 @@ class Experience extends Component{
 
     handleSubmit = (e) => {
         e.preventDefault();
-        let exp = this.state['id']
+        let exp = this.state
         exp['id'] = uniqid()
         this.props.saveExp(exp)
         console.log(this.state)

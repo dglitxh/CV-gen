@@ -6,7 +6,7 @@ export const ExpDisplay = (props) => {
     if( entries){
     return(
       <div className="experience">
-        <h1 className="mt-4 bg-gray-200 px-3 text-sky-400">{name}</h1>
+        <h1 className="mt-4 bg-gray-200 p-2 text-sky-600 text-2xl">{name}</h1>
         <Timeline>
         {entries.map((entry) => {
           console.log(entry)
@@ -18,14 +18,13 @@ export const ExpDisplay = (props) => {
                 actions={[ <EditOutlined/>, <DeleteOutlined/>,]}
                 >
                     <div className='cardhead'>
-                      <h5 className="text-2xl ">{`${entry.workplace}`}</h5>
-                      <h5>{`${entry.startDate} ${entry.endDate? entry.endDate: 'Current'} `}</h5>
+                      <h5 className="text-2xl text-gray-500">{`${entry.workplace} [${entry.position}]`}</h5>
+                      <h5 className="text-gray-500">{`${entry.startDate}  -  ${entry.endDate? entry.endDate: 'Current'} `}</h5>
                     </div>
-                    <h6 className="text-xl text-gray-500"> {`${entry.position}`}</h6>
-                    <ul className="pl-3">
+                    <ul className="pl-4 ml-2 list-disc">
                       {entry.tasks.split(/\n/).map((task)=>{
                         return(
-                          <li>{task}</li>
+                          <li className="text-md">{task}</li>
                         )
                       })}
                     </ul>
@@ -50,9 +49,9 @@ export const ExpDisplay = (props) => {
       return(
         <div className="abouted">
             <div>
-              <h1 className='text-4xl text-sky-600'>{`${entries[0].firstName} ${entries[0].lastName}`}</h1>
+              <h1 className='text-6xl text-sky-600 mb-1'>{`${entries[0].firstName} ${entries[0].lastName}`}</h1>
             </div>
-            <div className="inline-flex text-gray-400">
+            <div className="inline-flex text-gray-400 text-lg m-0">
               <p className='pr-3'>{entries[0].email},</p>
               <p className='pr-3'>{entries[0].phone},</p>
               <p className='pr-3'>{entries[0].address},</p>
@@ -72,7 +71,7 @@ export const ExpDisplay = (props) => {
         if( entries){
         return(
           <div className="education">
-            <h1 className="mt-4 bg-gray-200 px-3 text-sky-400">{name}</h1>
+            <h1 className="mt-4 bg-gray-200 p-2 text-sky-600 text-2xl">{name}</h1>
             <Timeline>
             {entries.map((entry) => {
               console.log(entry)
@@ -85,8 +84,8 @@ export const ExpDisplay = (props) => {
                     >
                       <div>
                         <div className="cardhead">
-                          <h5 className="text-xl">{entry.school}</h5>
-                          <h5 className="text-right">{`${entry.startDate} to ${entry.endDate? entry.endDate: 'Current'}`}</h5>
+                          <h5 className="text-xl text-gray-500">{entry.school}</h5>
+                          <h5 className="text-gray-500">{`${entry.startDate}  -  ${entry.endDate? entry.endDate: 'Current'}`}</h5>
                         </div>
                         <h6 className="text-lg"> {entry.program}</h6>
 
