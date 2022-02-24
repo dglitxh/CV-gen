@@ -52,6 +52,7 @@ class Education extends Component{
                     onChange={this.handleChange}
                     name='school'
                     required
+                    defaultValue = {this.props.selected? this.props.selected.school : ''}
                     value={this.state.school}/>
             </div>
             <div className="w-full md:w-1/2 px-3">
@@ -67,6 +68,7 @@ class Education extends Component{
                     onChange={this.handleChange}
                     name='program'
                     required
+                    defaultValue = {this.props.selected? this.props.selected.program : ''}
                     value={this.state.program}/>
             </div>
         </div>
@@ -84,6 +86,7 @@ class Education extends Component{
                     onChange={this.handleChange}
                     name='startDate'
                     required
+                    defaultValue = {this.props.selected? this.props.selected.startDate : ''}
                     value={this.state.startDate}/>
             </div>
             <div className="w-full md:w-1/2 px-3 mb-2">
@@ -98,6 +101,7 @@ class Education extends Component{
                     placeholder="End date"
                     onChange={this.handleChange}
                     name='endDate'
+                    defaultValue = {this.props.selected? this.props.selected.endDate : ''}
                     value={this.state.endDate}/>
             </div>
         </div>

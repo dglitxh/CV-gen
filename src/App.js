@@ -24,8 +24,6 @@ const App = (props) => {
     setCollapsed(!collapsed)
   }
 
-
-
   return(
     <div>
       <Layout>
@@ -50,7 +48,6 @@ const App = (props) => {
               className: 'trigger',
               onClick: toggle,
             })}
-            <h2 className="text-center text-purple-500"> Fill Form To Build Resume</h2>
           </Header>
           <Content
             className="site-layout-background"

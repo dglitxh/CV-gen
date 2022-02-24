@@ -97,9 +97,9 @@ const FormView = (props) => {
  :
  <div id="cv" className="px-8 py-12 max-w-md mx-auto sm:max-w-xl lg:max-w-full lg:w-1/2 lg:py-24 lg:px-12 pb-6">
  <Preview
-  about = <AboutDisplay entries={about} />
-  experience = <ExpDisplay entries={exp} name={'Experience'}/>
-  education=<EduDisplay entries={edu} name={'Education'}/>
+  about={<AboutDisplay entries={about} />}
+  experience={<ExpDisplay entries={exp} name={'Experience'}/>}
+  education={<EduDisplay entries={edu} name={'Education'}/>}
  />
 
 </div>}

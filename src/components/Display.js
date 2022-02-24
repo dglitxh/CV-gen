@@ -85,7 +85,7 @@ export const ExpDisplay = (props) => {
                       <div>
                         <div className="cardhead">
                           <h5 className="text-xl text-gray-500">{entry.school}</h5>
-                          <h5 className="text-gray-500">{`${entry.startDate}  -  ${entry.endDate? entry.endDate: 'Current'}`}</h5>
+                          <h5 className="text-gray-500">{`${entry.startDate} - ${entry.endDate? entry.endDate: 'Current'}`}</h5>
                         </div>
                         <h6 className="text-lg"> {entry.program}</h6>
 
@@ -94,9 +94,6 @@ export const ExpDisplay = (props) => {
                 </Timeline.Item>
                 </>
                 )
-
-
-
             })}
             </Timeline>
           </div>
