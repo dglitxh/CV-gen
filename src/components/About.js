@@ -24,8 +24,7 @@ class About extends Component{
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.saveAbout(this.state)
-
-        console.log(this.state)
+        console.log(this.state, 'about form values')
     }
 
     render(){

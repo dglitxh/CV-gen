@@ -1,21 +1,33 @@
 import { EditOutlined, DeleteOutlined} from '@ant-design/icons';
 import { Timeline, Card } from 'antd'
 
+
 export const ExpDisplay = (props) => {
     const { entries, name } = props;
-    if( entries){
+
+    const remove = (id) => {
+      props.handleDelete(id)
+    }
+
+    const edit = (id) => {
+      props.handleEdit(id)
+    }
+    
+    
     return(
-      <div className="experience">
+      <div>
+      {entries? <div className="experience">
         <h1 className="mt-4 bg-gray-200 p-2 text-sky-600 text-2xl">{name}</h1>
         <Timeline>
         {entries.map((entry) => {
           console.log(entry)
             return (
-              <>
+              <div key={entry.id}>
               <Timeline.Item>
                <Card
                 title=""
-                actions={[ <EditOutlined/>, <DeleteOutlined/>,]}
+                actions={[ <EditOutlined onClick={() => {edit(entry.id)}}/>,
+                   <DeleteOutlined onClick={() => {remove(entry.id)}} />,]}
                 >
                     <div className='cardhead'>
                       <h5 className="text-2xl text-gray-500">{`${entry.workplace} [${entry.position}]`}</h5>
@@ -30,24 +42,25 @@ export const ExpDisplay = (props) => {
                     </ul>
             </Card>
             </Timeline.Item>
-            </>
+            </div>
             )
         })}
         </Timeline>
       </div>
+      :
+       <div></div>}
+      </div>
     )
-      }else{
-        console.log('there is a problem with the display component')
-        return <div></div>
-      }
+      
   }
 
 
   export const AboutDisplay = (props) => {
       const { entries } = props;
-      if(entries.length > 0){
+      
       return(
-        <div className="abouted">
+        <>
+        {entries.length>0? <div className="abouted">
             <div>
               <h1 className='text-6xl text-sky-600 mb-1'>{`${entries[0].firstName} ${entries[0].lastName}`}</h1>
             </div>
@@ -59,28 +72,40 @@ export const ExpDisplay = (props) => {
             </div>
 
         </div>
-      )
-        }else{
-          console.log('there is a problem with the display component')
-          return <div></div>
+        :<></>
         }
+       </>
+      )
+       
     }
 
     export const EduDisplay = (props) => {
-        const { entries, name } = props;
-        if( entries){
+        const { entries, name, } = props;
+
+        const remove = (id) => {
+          props.handleDelete(id)
+        }
+
+        const edit = (id) => {
+          props.handleEdit(id)
+        }
+
+       
         return(
-          <div className="education">
+          <div>
+          {entries?  <div className="education">
             <h1 className="mt-4 bg-gray-200 p-2 text-sky-600 text-2xl">{name}</h1>
+            {console.log(entries, 'edu')}
             <Timeline>
             {entries.map((entry) => {
               console.log(entry)
                 return (
-                  <>
+                  <div key={entry.id}>
                   <Timeline.Item>
                    <Card
                     title=""
-                    actions={[ <EditOutlined/>, <DeleteOutlined/>,]}
+                    actions={[ <EditOutlined onClick={() => {edit(entry.id)}}/>,
+                       <DeleteOutlined onClick={() => {remove(entry.id)}} />,]}
                     >
                       <div>
                         <div className="cardhead">
@@ -92,14 +117,14 @@ export const ExpDisplay = (props) => {
                         </div>
                 </Card>
                 </Timeline.Item>
-                </>
+                </div>
                 )
             })}
             </Timeline>
           </div>
+        :
+        <div></div>}
+        </div>
         )
-          }else{
-            console.log('there is a problem with the display component')
-            return <div></div>
-          }
+         
       }

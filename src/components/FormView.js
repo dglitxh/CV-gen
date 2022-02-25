@@ -1,9 +1,9 @@
 import { useState, React } from "react";
 import About from "./About";
-import Education from "./Education";
-import Experience from "./Experience";
+import { Education, EditEdu} from "./Education";
+import {Experience, EditExp} from "./Experience";
 import { EduDisplay, ExpDisplay, AboutDisplay } from "./Display"
-import { Steps, Button, message } from 'antd';
+import { Steps, Button, message, Modal } from 'antd';
 import Preview from "./Preview"
 
 const { Step } = Steps;
@@ -13,7 +13,21 @@ const FormView = (props) => {
   let [about, setAbout] = useState([])
   let [edu, setEdu] = useState([])
   let [exp, setExp] = useState([])
+  let [selected, setSelected] = useState({})
   const {preview, setPreview} = props
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleOk = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
 
 
   const saveAbout = (item) => {
@@ -23,16 +37,49 @@ const FormView = (props) => {
   }
 
   const saveEdu = (item) => {
-    const newEntry = [...edu, item];
-    setEdu(newEntry)
+    if (!edu.find((el) => el.id === item.id)){
+      const newEntry = [...edu, item];
+      setEdu(newEntry)
+    }
     message.success('New educational history added!')
   }
 
   const saveExp = (item) => {
-    const newEntry = [...exp, item];
-    setExp(newEntry)
+    if (!exp.find((el) => el.id === item.id)){
+      const newEntry = [...exp, item];
+      setExp(newEntry)
+    }
     message.success('New experience added!')
   }
+
+  const editEduEntry = (item) => {
+    let ind = edu.indexOf(selected)
+    let edit = edu[ind]
+    console.log(edit, 'editentry')
+    for (let i of Object.keys(edit)){
+      if (i !== 'id') edit[i] = item[i]
+    }
+    setTimeout(() => {
+      if (selected) setEdu(edu.splice(ind, 1, edit))
+      console.log('entry has been edited')
+    }, 0);
+     
+  }
+
+  const editExpEntry = (item) => {
+    let ind = exp.indexOf(selected)
+    let edit = exp[ind]
+    console.log(edit, 'editentry')
+    for (let i of Object.keys(edit)){
+      if (i !== 'id') edit[i] = item[i]
+    }
+    setTimeout(() => {
+      if (selected) setExp(exp.splice(ind, 1, edit))
+      console.log('entry has been edited')
+    }, 0);
+     
+  }
+
 
   const next = () => {
     setCurrent(current + 1);
@@ -44,6 +91,26 @@ const FormView = (props) => {
 
   const onChangeStep = (id) => {
     setCurrent(id)
+  }
+
+  const deleteExp = (id) => {
+    return setExp(exp.filter((el) => el.id !== id))
+  }
+
+  const deleteEdu = (id) => {
+    return setEdu(edu.filter((el) => el.id !== id))
+  }
+
+  const handleEdit = (id) => {
+    const edit = edu.find((el) => el.id === id)
+    let select = edit? edit :exp.find((el) => el.id === id)
+    setTimeout(() => {
+      console.log('ei select')
+      setSelected(select)
+      console.log(selected, 'selected')
+      showModal()
+    }, 0)
+    
   }
 
   const steps = [
@@ -98,11 +165,24 @@ const FormView = (props) => {
  <div id="cv" className="px-8 py-12 max-w-md mx-auto sm:max-w-xl lg:max-w-full lg:w-1/2 lg:py-24 lg:px-12 pb-6">
  <Preview
   about={<AboutDisplay entries={about} />}
-  experience={<ExpDisplay entries={exp} name={'Experience'}/>}
-  education={<EduDisplay entries={edu} name={'Education'}/>}
+  experience={<ExpDisplay entries={exp} name={'Experience'} handleEdit={handleEdit} handleDelete={deleteExp}/>}
+  education={<EduDisplay entries={edu} name={'Education'} handleEdit={handleEdit} handleDelete={deleteEdu}/>}
  />
 
 </div>}
+<Modal title="Basic Modal" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+      {
+         (function disp() {
+          return(
+               exp.includes(selected)? <EditExp  editExpEntry={editExpEntry} selected={selected}/>
+              : <EditEdu  editEduEntry={editEduEntry} selected={selected}/>
+              )
+          })()
+
+         
+      }  
+      
+</Modal>
 </div>
   )
 }
