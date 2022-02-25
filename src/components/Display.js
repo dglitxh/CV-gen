@@ -3,7 +3,7 @@ import { Timeline, Card } from 'antd'
 
 
 export const ExpDisplay = (props) => {
-    const { entries, name } = props;
+    const { entries, name, actions } = props;
 
     const remove = (id) => {
       props.handleDelete(id)
@@ -26,8 +26,8 @@ export const ExpDisplay = (props) => {
               <Timeline.Item>
                <Card
                 title=""
-                actions={[ <EditOutlined onClick={() => {edit(entry.id)}}/>,
-                   <DeleteOutlined onClick={() => {remove(entry.id)}} />,]}
+                actions={actions?[ <EditOutlined onClick={() => {edit(entry.id)}}/>,
+                   <DeleteOutlined onClick={() => {remove(entry.id)}} />,]:null}
                 >
                     <div className='cardhead'>
                       <h5 className="text-2xl text-gray-500">{`${entry.workplace} [${entry.position}]`}</h5>
@@ -80,7 +80,7 @@ export const ExpDisplay = (props) => {
     }
 
     export const EduDisplay = (props) => {
-        const { entries, name, } = props;
+        const { entries, name, actions } = props;
 
         const remove = (id) => {
           props.handleDelete(id)
@@ -104,8 +104,8 @@ export const ExpDisplay = (props) => {
                   <Timeline.Item>
                    <Card
                     title=""
-                    actions={[ <EditOutlined onClick={() => {edit(entry.id)}}/>,
-                       <DeleteOutlined onClick={() => {remove(entry.id)}} />,]}
+                    actions={actions?[ <EditOutlined onClick={() => {edit(entry.id)}}/>,
+                       <DeleteOutlined onClick={() => {remove(entry.id)}} />,]: null}
                     >
                       <div>
                         <div className="cardhead">

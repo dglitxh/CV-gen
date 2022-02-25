@@ -80,6 +80,7 @@ const FormView = (props) => {
      
   }
 
+  const actions = props.actions
 
   const next = () => {
     setCurrent(current + 1);
@@ -165,8 +166,8 @@ const FormView = (props) => {
  <div id="cv" className="px-8 py-12 max-w-md mx-auto sm:max-w-xl lg:max-w-full lg:w-1/2 lg:py-24 lg:px-12 pb-6">
  <Preview
   about={<AboutDisplay entries={about} />}
-  experience={<ExpDisplay entries={exp} name={'Experience'} handleEdit={handleEdit} handleDelete={deleteExp}/>}
-  education={<EduDisplay entries={edu} name={'Education'} handleEdit={handleEdit} handleDelete={deleteEdu}/>}
+  experience={<ExpDisplay actions={actions} entries={exp} name={'Experience'} handleEdit={handleEdit} handleDelete={deleteExp}/>}
+  education={<EduDisplay actions={actions} entries={edu} name={'Education'} handleEdit={handleEdit} handleDelete={deleteEdu}/>}
  />
 
 </div>}

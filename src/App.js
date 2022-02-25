@@ -19,6 +19,7 @@ const { Header, Sider, Content } = Layout;
 const App = (props) => {
   const [preview, setPreview] = useState(false)
   let [collapsed, setCollapsed] = useState(false)
+  const [actions, setActions] = useState(true)
 
   const toggle = () => {
     setCollapsed(!collapsed)
@@ -34,10 +35,20 @@ const App = (props) => {
             <Menu.Item key="1" icon={<UserOutlined />} onClick={() => setPreview(false)}>
               Form
             </Menu.Item>
-            <Menu.Item key="2" icon={<VideoCameraOutlined />} onClick={() => setPreview(true)}>
+            <Menu.Item key="2" icon={<VideoCameraOutlined />} onClick={() => {
+              return(
+                setPreview(true),
+                setActions(true)
+                )
+              }}>
               View & Edit
             </Menu.Item>
-            <Menu.Item key="3" icon={<UploadOutlined />} onClick={() => setPreview(true)}>
+            <Menu.Item key="3" icon={<UploadOutlined />} onClick={() => {
+              return(
+                setPreview(true),
+                setActions(false)
+                )
+              }}>
               Preview
             </Menu.Item>
           </Menu>
@@ -57,7 +68,7 @@ const App = (props) => {
               minHeight: 280,
             }}
           >
-          <FormView preview={preview} setPreview={setPreview}/>
+          <FormView preview={preview} setPreview={setPreview} actions={actions}/>
           </Content>
         </Layout>
       </Layout>
