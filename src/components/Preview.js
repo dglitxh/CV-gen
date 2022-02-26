@@ -1,6 +1,6 @@
+import React from 'react'
 
-
-const Preview = (props) => {
+const Preview = React.forwardRef((props, ref) => {
 
   return(
     <>
@@ -10,5 +10,6 @@ const Preview = (props) => {
     </>
   )
 }
+)
 
 export default Preview

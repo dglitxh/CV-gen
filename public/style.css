@@ -45,3 +45,10 @@
   .site-layout .site-layout-background {
     background: #fff;
   }
+
+  .edit-about{
+    display: flex;
+    justify-content: space-between;
+
+
+  }

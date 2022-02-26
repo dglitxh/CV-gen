@@ -56,13 +56,25 @@ export const ExpDisplay = (props) => {
 
 
   export const AboutDisplay = (props) => {
-      const { entries } = props;
+      const { entries, actions } = props;
       
+
+      const edit = (id) => {
+        props.handleEdit(id)
+      }
+
+
       return(
         <>
         {entries.length>0? <div className="abouted">
-            <div>
-              <h1 className='text-6xl text-sky-600 mb-1'>{`${entries[0].firstName} ${entries[0].lastName}`}</h1>
+            <div className='edit-about'>
+              <h1 className='text-6xl text-sky-600 mb-1'>
+                {`${entries[0].firstName} ${entries[0].lastName}`}
+              </h1>
+              {actions?<button onClick={() => {edit(entries[0].id)}} className='hover:text-sky-600'>
+                <EditOutlined />
+              </button>
+              :<></>}
             </div>
             <div className="inline-flex text-gray-400 text-lg m-0">
               <p className='pr-3'>{entries[0].email},</p>
@@ -70,7 +82,18 @@ export const ExpDisplay = (props) => {
               <p className='pr-3'>{entries[0].address},</p>
               <p className='pr-3'>{entries[0].age}</p>
             </div>
-
+            <div>
+          {
+            entries[0].summary? <div>
+              <h1 className="mt-4 bg-gray-200 p-2 text-sky-600 text-2xl">
+                Professional Summary
+                </h1>
+                <p className='px-2'>{entries[0].summary}</p>
+            </div>
+            :
+            <></>
+          }
+          </div>
         </div>
         :<></>
         }

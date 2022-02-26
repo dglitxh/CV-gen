@@ -4,13 +4,18 @@ import uniqid from "uniqid"
 class About extends Component{
     constructor(props){
         super(props);
-        this.state = {
-                firstName: '',
-                lastName: '',
-                phone: '',
-                email: '',
-                id: uniqid()
-            }
+        this.initialState = this.props.selected? this.props.selected
+        :{
+            firstName: '',
+            lastName: '',
+            phone: '',
+            email: '',
+            summary: '',
+            id: uniqid()
+        }
+        console.log(this.initialState, 'about init')
+        this.state = this.initialState
+        console.log(this.state)
     }
 
     handleChange = (e) => {
@@ -112,6 +117,23 @@ class About extends Component{
                             value={this.state.email}/>
                     </div>
                 </div>
+                <div className="flex flex-wrap -mx-3 mb-6">
+            <div className="w-full px-3">
+        <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+           Professional Summary
+        </label>
+        <textarea className="appearance-none block w-full bg-gray-200 text-gray-700
+        border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                id="grid-task-name"
+                type="date"
+                placeholder="Professional summary"
+                onChange={this.handleChange}
+                name='summary'
+                required
+                value={this.state.summary}>
+            </textarea>
+        </div>
+        </div>
                 <button type="submit" className="inline-flex justify-center mt-2 py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
               Save
             </button>

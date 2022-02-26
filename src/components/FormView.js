@@ -1,10 +1,11 @@
-import { useState, React } from "react";
+import React, { useState } from "react";
 import About from "./About";
 import { Education, EditEdu} from "./Education";
 import {Experience, EditExp} from "./Experience";
 import { EduDisplay, ExpDisplay, AboutDisplay } from "./Display"
 import { Steps, Button, message, Modal } from 'antd';
 import Preview from "./Preview"
+import { useReactToPrint } from 'react-to-print';
 
 const { Step } = Steps;
 
@@ -16,6 +17,11 @@ const FormView = (props) => {
   let [selected, setSelected] = useState({})
   const {preview, setPreview} = props
   const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const componentRef = React.createRef(null);
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+  });
 
   const showModal = () => {
     setIsModalVisible(true);
@@ -104,7 +110,7 @@ const FormView = (props) => {
 
   const handleEdit = (id) => {
     const edit = edu.find((el) => el.id === id)
-    let select = edit? edit :exp.find((el) => el.id === id)
+    let select = about[0].id === id? about[0] :edit? edit :exp.find((el) => el.id === id)
     setTimeout(() => {
       console.log('ei select')
       setSelected(select)
@@ -164,18 +170,25 @@ const FormView = (props) => {
  </div>
  :
  <div id="cv" className="px-8 py-12 max-w-md mx-auto sm:max-w-xl lg:max-w-full lg:w-1/2 lg:py-24 lg:px-12 pb-6">
+ <div ref={componentRef} className="px-5 py-3">
  <Preview
-  about={<AboutDisplay entries={about} />}
+  about={<AboutDisplay actions={actions} entries={about} handleEdit={handleEdit} />}
   experience={<ExpDisplay actions={actions} entries={exp} name={'Experience'} handleEdit={handleEdit} handleDelete={deleteExp}/>}
   education={<EduDisplay actions={actions} entries={edu} name={'Education'} handleEdit={handleEdit} handleDelete={deleteEdu}/>}
- />
+  />
+</div>
 
-</div>}
+{!actions?<button className="inline-flex justify-center mt-2 py-2 px-4 border border-transparent shadow-sm text-sm font-medium 
+rounded-md mx-5 text-white bg-sky-400 hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+ onClick={() => handlePrint()}>Print resume</button>: <></>}
+</div>
+
+}
 <Modal title="Basic Modal" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
       {
          (function disp() {
           return(
-               exp.includes(selected)? <EditExp  editExpEntry={editExpEntry} selected={selected}/>
+               about.includes(selected)? <About saveAbout={saveAbout} selected={selected}/> :exp.includes(selected)? <EditExp  editExpEntry={editExpEntry} selected={selected}/>
               : <EditEdu  editEduEntry={editEduEntry} selected={selected}/>
               )
           })()
