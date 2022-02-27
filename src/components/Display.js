@@ -1,5 +1,6 @@
 import { EditOutlined, DeleteOutlined, ExclamationCircleOutlined} from '@ant-design/icons';
 import { Timeline, Card, Modal } from 'antd'
+import { DateTime as dt  } from 'luxon'
 
 
 export const ExpDisplay = (props) => {
@@ -48,7 +49,11 @@ export const ExpDisplay = (props) => {
                 >
                     <div className='cardhead'>
                       <h5 className="text-2xl text-gray-500">{`${entry.workplace} [${entry.position}]`}</h5>
-                      <h5 className="text-gray-500">{`${entry.startDate}  -  ${entry.endDate? entry.endDate: 'Current'} `}</h5>
+                      <h5 className="text-gray-500">{
+                        `${dt.fromISO(entry.startDate).toFormat('LLL yyyy').toLocaleString(dt.DATE_FULL)}  -
+                        ${entry.endDate? dt.fromISO(entry.endDate).toFormat('LLL yyyy').toLocaleString(dt.DATE_FULL)
+                        : 'Current'} `}
+                        </h5>
                     </div>
                     <ul className="pl-4 ml-2 list-disc">
                       {entry.tasks.split(/\n/).map((task)=>{
@@ -102,7 +107,7 @@ export const ExpDisplay = (props) => {
             <div>
           {
             entries[0].summary? <div>
-              <h1 className="mt-4 bg-gray-200 p-2 text-sky-600 text-2xl">
+              <h1 className="bg-gray-200 p-2 text-sky-600 text-2xl">
                 Professional Summary
                 </h1>
                 <p className='px-2 text-lg'>{entries[0].summary}</p>
@@ -167,7 +172,11 @@ export const ExpDisplay = (props) => {
                       <div>
                         <div className="cardhead">
                           <h5 className="text-xl text-gray-500">{entry.school}</h5>
-                          <h5 className="text-gray-500">{`${entry.startDate} - ${entry.endDate? entry.endDate: 'Current'}`}</h5>
+                          <h5 className="text-gray-500">{
+                            `${dt.fromISO(entry.startDate).toFormat('LLL yyyy').toLocaleString(dt.DATE_FULL)}  -
+                            ${entry.endDate? dt.fromISO(entry.endDate).toFormat('LLL yyyy').toLocaleString(dt.DATE_FULL)
+                            : 'Current'} `}
+                            </h5>
                         </div>
                         <h6 className="text-lg"> {entry.program}</h6>
 

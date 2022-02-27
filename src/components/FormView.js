@@ -70,11 +70,12 @@ const FormView = (props) => {
       if (selected) setEdu(new_edu)
       console.log('entry has been edited')
     }, 0);
+    message.success('Education entry updated')
 
   }
 
   const editExpEntry = (item) => {
-    let ind = exp.indexOf(selected)
+    try{let ind = exp.indexOf(selected)
     let edit = exp[ind]
     item['id'] = edit['id']
     setTimeout(() => {
@@ -83,8 +84,10 @@ const FormView = (props) => {
       if (selected) setExp(new_exp)
       console.log('entry has been edited')
     }, 0);
-
-
+    message.success('Experience entry updated')
+  }catch(err){
+    console.log(err)
+  }
   }
 
 
