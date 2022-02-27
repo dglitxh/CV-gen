@@ -138,7 +138,7 @@ const FormView = (props) => {
   ];
   return(
     <div>
-    {!preview? <div className=" w-full  px-8 py-12 max-w-md mx-auto sm:max-w-xl lg:max-w-full lg:w-1/2 lg:py-24 lg:px-12 pb-6">
+    {!preview? <div className=" w-full px-8 py-12 mx-auto lg:max-w-full lg:w-2/3 lg:py-24 lg:px-12 pb-6">
  <Steps current={current} onChange={onChangeStep}>
   {steps.map(item => (
     <Step key={item.id} title={item.title} />
@@ -168,31 +168,43 @@ const FormView = (props) => {
 </div>
  </div>
  :
- <div id="cv" className="px-8 py-12 max-w-md mx-auto sm:max-w-xl lg:max-w-full lg:w-1/2 lg:py-24 lg:px-12 pb-6">
+ <div id="cv" className="w-full mx-auto lg:max-w-full lg:w-2/3 lg:py-24 lg:px-12 pb-6">
  <div ref={componentRef} className="px-5 py-3">
  <Preview
   about={<AboutDisplay actions={actions} entries={about} handleEdit={handleEdit} />}
   experience={<ExpDisplay actions={actions} entries={exp} name={'Experience'} handleEdit={handleEdit} handleDelete={deleteExp}/>}
   education={<EduDisplay actions={actions} entries={edu} name={'Education'} handleEdit={handleEdit} handleDelete={deleteEdu}/>}
   />
+
 </div>
 
-{!actions?<button className="inline-flex justify-center mt-2 py-2 px-4 border border-transparent shadow-sm text-sm font-medium
-rounded-md mx-5 text-white bg-sky-400 hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
- onClick={() => handlePrint()}>Print resume</button>: <></>}
-</div>
-
+{
+  actions?<button className="inline-flex justify-center mt-2 py-2 px-4 border border-transparent shadow-sm text-sm font-medium
+  rounded-md mx-5 text-white bg-sky-400 hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+   onClick={() => props.setActions(false)}>Preview</button>: <></>
 }
-<Modal title="Basic Modal" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+
+{
+  !actions?<button className="inline-flex justify-center mt-2 py-2 px-4 border border-transparent shadow-sm text-sm font-medium
+  rounded-md mx-5 text-white bg-sky-400 hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+   onClick={() => handlePrint()}>Print resume</button>: <></>}
+  </div>
+}
+<Modal
+  title="Basic Modal"
+  visible={isModalVisible}
+  onOk={handleOk}
+  onCancel={handleCancel}
+  okText="Done"
+  >
       {
-
             <div key={selected.id}>
-               {about.includes(selected)? <About saveAbout={saveAbout} selected={selected}/> :exp.includes(selected)? <EditExp  editExpEntry={editExpEntry} selected={selected}/>
-              : <EditEdu  editEduEntry={editEduEntry} selected={selected}/>}
+               {
+                 exp.includes(selected)? <EditExp editExpEntry={editExpEntry} selected={selected}/>
+                 :edu.includes(selected)? <EditEdu  editEduEntry={editEduEntry} selected={selected}/>
+                 :<About saveAbout={saveAbout} selected={selected}/>
+               }
               </div>
-
-
-
       }
 
 </Modal>

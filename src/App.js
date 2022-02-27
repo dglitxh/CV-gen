@@ -1,6 +1,6 @@
 import React from "react";
 import {useState} from 'react'
-import { Layout, Menu } from 'antd';
+import { Layout, Menu, notification } from 'antd';
 import FormView from './components/FormView'
 
 import {
@@ -24,6 +24,18 @@ const App = (props) => {
   const toggle = () => {
     setCollapsed(!collapsed)
   }
+
+  (function (){
+    notification.info({
+     message: 'Hello there!',
+     key: '77xd',
+     description:
+       'For an Optimal experience use phone in Landscape or use a PC',
+   });
+ })()
+
+
+
 
   return(
     <div>
@@ -68,7 +80,7 @@ const App = (props) => {
               minHeight: 280,
             }}
           >
-          <FormView preview={preview} setPreview={setPreview} actions={actions}/>
+          <FormView preview={preview} setPreview={setPreview} actions={actions} setActions={setActions}/>
           </Content>
         </Layout>
       </Layout>

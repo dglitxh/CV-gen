@@ -117,7 +117,7 @@ export class Education extends Component{
 }
 
 export const EditEdu = (props) => {
-    const InitialState = props.selected  
+    const InitialState = props.selected
     const [school, setSchool] = useState(InitialState.school)
     const [program, setProgram] = useState(InitialState.program)
     const [startDate, setStartDate] = useState(InitialState.startDate)
@@ -156,13 +156,13 @@ export const EditEdu = (props) => {
             console.log(edit, 'edit in edu')
             props.editEduEntry(edit)
         }, 0);
-        
-        
-        
+
+
+
     }
 
     return(
-        
+
         <div className="form-component">
         <h1 className="text-3xl my-5 text-sky-600 heading leading-7" >Education</h1>
     <form  onSubmit={(e) => handleSubmit(e)} className="w-full mt-3">
@@ -232,12 +232,15 @@ export const EditEdu = (props) => {
             />
     </div>
 </div>
-<button type="submit" className="inline-flex justify-center my-1 py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-      Add
+<button
+  type="submit"
+  className="inline-flex justify-center my-1 py-2 px-4 border border-transparent
+   shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700
+  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+      Update
     </button>
 </form>
 <br></br>
 </div>
     )
 }
-

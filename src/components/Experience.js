@@ -131,7 +131,7 @@ export class Experience extends Component{
 
 export const EditExp = (props) => {
 
-    const InitialState = props.selected  
+    const InitialState = props.selected
     const [workplace, setWorkplace] = useState(InitialState.workplace)
     const [position, setPosition] = useState(InitialState.position)
     const [startDate, setStartDate] = useState(InitialState.startDate)
@@ -175,9 +175,9 @@ export const EditExp = (props) => {
             console.log(edit, 'edit in exp')
             props.editExpEntry(edit)
         }, 0);
-        
-        
-        
+
+
+
     }
 
     return(
@@ -263,8 +263,12 @@ border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
     </textarea>
 </div>
 </div>
-<button type="submit" className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-      Add
+<button
+  type="submit"
+  className="inline-flex justify-center my-1 py-2 px-4 border border-transparent
+   shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700
+  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+      Update
     </button>
 </form>
 
@@ -273,4 +277,3 @@ border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
 </div>
     )
 }
-

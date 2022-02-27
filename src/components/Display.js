@@ -53,7 +53,7 @@ export const ExpDisplay = (props) => {
                     <ul className="pl-4 ml-2 list-disc">
                       {entry.tasks.split(/\n/).map((task)=>{
                         return(
-                          <li className="text-md">{task}</li>
+                          <li className="text-lg">{task}</li>
                         )
                       })}
                     </ul>
@@ -105,7 +105,7 @@ export const ExpDisplay = (props) => {
               <h1 className="mt-4 bg-gray-200 p-2 text-sky-600 text-2xl">
                 Professional Summary
                 </h1>
-                <p className='px-2'>{entries[0].summary}</p>
+                <p className='px-2 text-lg'>{entries[0].summary}</p>
             </div>
             :
             <></>
