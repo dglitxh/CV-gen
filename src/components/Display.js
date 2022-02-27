@@ -1,5 +1,5 @@
-import { EditOutlined, DeleteOutlined} from '@ant-design/icons';
-import { Timeline, Card } from 'antd'
+import { EditOutlined, DeleteOutlined, ExclamationCircleOutlined} from '@ant-design/icons';
+import { Timeline, Card, Modal } from 'antd'
 
 
 export const ExpDisplay = (props) => {
@@ -12,8 +12,26 @@ export const ExpDisplay = (props) => {
     const edit = (id) => {
       props.handleEdit(id)
     }
-    
-    
+
+    function deleteWarn(id) {
+      Modal.confirm({
+        title: 'Sure you want to delete this?',
+        icon: <ExclamationCircleOutlined />,
+        okText: 'delete',
+        okType: 'danger',
+        content: (
+          "items deleted can't be restored"
+        ),
+        onOk() {
+          remove(id)
+          console.log('deleted exp entry')
+        },
+        onCancel( ){
+          console.log('cancelled delete')
+        }
+      });
+    }
+
     return(
       <div>
       {entries? <div className="experience">
@@ -26,7 +44,7 @@ export const ExpDisplay = (props) => {
                <Card
                 title=""
                 actions={actions?[ <EditOutlined onClick={() => {edit(entry.id)}}/>,
-                   <DeleteOutlined onClick={() => {remove(entry.id)}} />,]:null}
+                   <DeleteOutlined onClick={() => {deleteWarn(entry.id)}} />,]:null}
                 >
                     <div className='cardhead'>
                       <h5 className="text-2xl text-gray-500">{`${entry.workplace} [${entry.position}]`}</h5>
@@ -50,13 +68,13 @@ export const ExpDisplay = (props) => {
        <div></div>}
       </div>
     )
-      
+
   }
 
 
   export const AboutDisplay = (props) => {
       const { entries, actions } = props;
-      
+
 
       const edit = (id) => {
         props.handleEdit(id)
@@ -98,7 +116,7 @@ export const ExpDisplay = (props) => {
         }
        </>
       )
-       
+
     }
 
     export const EduDisplay = (props) => {
@@ -111,23 +129,40 @@ export const ExpDisplay = (props) => {
         const edit = (id) => {
           props.handleEdit(id)
         }
+        function deleteWarn(id) {
+          Modal.confirm({
+            title: 'Sure you want to delete this?',
+            icon: <ExclamationCircleOutlined color='red'/>,
+            okText: 'delete',
+            okType: 'danger',
+            content: (
+              "items deleted can't be restored"
+            ),
+            onOk() {
+              remove(id)
+              console.log('deleted edu entry')
+            },
+            onCancel( ){
+              console.log('cancelled delete')
+            }
+          });
+        }
 
-       
         return(
           <div>
           {entries?  <div className="education">
             <h1 className="mt-4 bg-gray-200 p-2 text-sky-600 text-2xl">{name}</h1>
-          
+
             <Timeline>
             {entries.map((entry) => {
-            
+
                 return (
                   <div key={entry.id}>
                   <Timeline.Item>
                    <Card
                     title=""
                     actions={actions?[ <EditOutlined onClick={() => {edit(entry.id)}}/>,
-                       <DeleteOutlined onClick={() => {remove(entry.id)}} />,]: null}
+                       <DeleteOutlined onClick={() => {deleteWarn(entry.id)}} />,]: null}
                     >
                       <div>
                         <div className="cardhead">
@@ -148,5 +183,5 @@ export const ExpDisplay = (props) => {
         <div></div>}
         </div>
         )
-         
+
       }
