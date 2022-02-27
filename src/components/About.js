@@ -10,6 +10,7 @@ class About extends Component{
             lastName: '',
             phone: '',
             email: '',
+            address: '',
             summary: '',
             id: uniqid()
         }

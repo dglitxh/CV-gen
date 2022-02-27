@@ -20,7 +20,6 @@ export const ExpDisplay = (props) => {
         <h1 className="mt-4 bg-gray-200 p-2 text-sky-600 text-2xl">{name}</h1>
         <Timeline>
         {entries.map((entry) => {
-          console.log(entry)
             return (
               <div key={entry.id}>
               <Timeline.Item>
@@ -118,10 +117,10 @@ export const ExpDisplay = (props) => {
           <div>
           {entries?  <div className="education">
             <h1 className="mt-4 bg-gray-200 p-2 text-sky-600 text-2xl">{name}</h1>
-            {console.log(entries, 'edu')}
+          
             <Timeline>
             {entries.map((entry) => {
-              console.log(entry)
+            
                 return (
                   <div key={entry.id}>
                   <Timeline.Item>

@@ -11,12 +11,13 @@ const { Step } = Steps;
 
 const FormView = (props) => {
   const [current, setCurrent] = useState(0);
-  let [about, setAbout] = useState([])
-  let [edu, setEdu] = useState([])
-  let [exp, setExp] = useState([])
-  let [selected, setSelected] = useState({})
+  const [about, setAbout] = useState([])
+  const [edu, setEdu] = useState([])
+  const [exp, setExp] = useState([])
+  const [selected, setSelected] = useState({})
   const {preview, setPreview} = props
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const actions = props.actions
 
   const componentRef = React.createRef(null);
   const handlePrint = useReactToPrint({
@@ -62,31 +63,31 @@ const FormView = (props) => {
     let ind = edu.indexOf(selected)
     let edit = edu[ind]
     console.log(edit, 'editentry')
-    for (let i of Object.keys(edit)){
-      if (i !== 'id') edit[i] = item[i]
-    }
+    item['id'] = edit['id']
     setTimeout(() => {
-      if (selected) setEdu(edu.splice(ind, 1, edit))
+      let new_edu = edu
+      new_edu.splice(ind, 1, item)
+      if (selected) setEdu(new_edu)
       console.log('entry has been edited')
     }, 0);
-     
+
   }
 
   const editExpEntry = (item) => {
     let ind = exp.indexOf(selected)
     let edit = exp[ind]
-    console.log(edit, 'editentry')
-    for (let i of Object.keys(edit)){
-      if (i !== 'id') edit[i] = item[i]
-    }
+    item['id'] = edit['id']
     setTimeout(() => {
-      if (selected) setExp(exp.splice(ind, 1, edit))
+      let new_exp = exp
+      new_exp.splice(ind, 1, item)
+      if (selected) setExp(new_exp)
       console.log('entry has been edited')
     }, 0);
-     
+
+
   }
 
-  const actions = props.actions
+
 
   const next = () => {
     setCurrent(current + 1);
@@ -112,12 +113,10 @@ const FormView = (props) => {
     const edit = edu.find((el) => el.id === id)
     let select = about[0].id === id? about[0] :edit? edit :exp.find((el) => el.id === id)
     setTimeout(() => {
-      console.log('ei select')
       setSelected(select)
-      console.log(selected, 'selected')
       showModal()
     }, 0)
-    
+
   }
 
   const steps = [
@@ -178,7 +177,7 @@ const FormView = (props) => {
   />
 </div>
 
-{!actions?<button className="inline-flex justify-center mt-2 py-2 px-4 border border-transparent shadow-sm text-sm font-medium 
+{!actions?<button className="inline-flex justify-center mt-2 py-2 px-4 border border-transparent shadow-sm text-sm font-medium
 rounded-md mx-5 text-white bg-sky-400 hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
  onClick={() => handlePrint()}>Print resume</button>: <></>}
 </div>
@@ -186,16 +185,16 @@ rounded-md mx-5 text-white bg-sky-400 hover:bg-sky-700 focus:outline-none focus:
 }
 <Modal title="Basic Modal" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
       {
-         (function disp() {
-          return(
-               about.includes(selected)? <About saveAbout={saveAbout} selected={selected}/> :exp.includes(selected)? <EditExp  editExpEntry={editExpEntry} selected={selected}/>
-              : <EditEdu  editEduEntry={editEduEntry} selected={selected}/>
-              )
-          })()
 
-         
-      }  
-      
+            <div key={selected.id}>
+               {about.includes(selected)? <About saveAbout={saveAbout} selected={selected}/> :exp.includes(selected)? <EditExp  editExpEntry={editExpEntry} selected={selected}/>
+              : <EditEdu  editEduEntry={editEduEntry} selected={selected}/>}
+              </div>
+
+
+
+      }
+
 </Modal>
 </div>
   )
