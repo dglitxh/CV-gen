@@ -45,7 +45,7 @@ const FormView = (props) => {
 
   const saveEdu = (item) => {
     if (!edu.find((el) => el.id === item.id)){
-      const newEntry = [...edu, item];
+      const newEntry = [item, ...edu];
       setEdu(newEntry)
     }
     message.success('New educational history added!')
@@ -53,7 +53,7 @@ const FormView = (props) => {
 
   const saveExp = (item) => {
     if (!exp.find((el) => el.id === item.id)){
-      const newEntry = [...exp, item];
+      const newEntry = [item, ...exp];
       setExp(newEntry)
     }
     message.success('New experience added!')

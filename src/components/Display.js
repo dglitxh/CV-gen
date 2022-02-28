@@ -48,13 +48,14 @@ export const ExpDisplay = (props) => {
                    <DeleteOutlined onClick={() => {deleteWarn(entry.id)}} />,]:null}
                 >
                     <div className='cardhead'>
-                      <h5 className="text-2xl text-gray-500">{`${entry.workplace} [${entry.position}]`}</h5>
+                      <h5 className="text-2xl mb-1 text-gray-500">{entry.position}</h5>
                       <h5 className="text-gray-500">{
                         `${dt.fromISO(entry.startDate).toFormat('LLL yyyy').toLocaleString(dt.DATE_FULL)}  -
                         ${entry.endDate? dt.fromISO(entry.endDate).toFormat('LLL yyyy').toLocaleString(dt.DATE_FULL)
                         : 'Current'} `}
                         </h5>
                     </div>
+                      <h5 className="text-xl mb-1 text-gray-500">{entry.workplace}</h5>
                     <ul className="pl-4 ml-2 list-disc">
                       {entry.tasks.split(/\n/).map((task)=>{
                         return(

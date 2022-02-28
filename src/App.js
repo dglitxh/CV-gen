@@ -20,20 +20,24 @@ const App = (props) => {
   const [preview, setPreview] = useState(false)
   let [collapsed, setCollapsed] = useState(false)
   const [actions, setActions] = useState(true)
+  const [showNotif, setShowNotif] = useState(true)
 
   const toggle = () => {
     setCollapsed(!collapsed)
   }
 
+if(showNotif){
   (function (){
     notification.info({
      message: 'Hello there!',
      key: '77xd',
+     duration: 8,
      description:
        'For an Optimal experience use phone in Landscape or use a PC',
    });
+   setShowNotif(false)
  })()
-
+}
 
 
 
@@ -72,12 +76,13 @@ const App = (props) => {
               onClick: toggle,
             })}
           </Header>
+
           <Content
             className="site-layout-background"
             style={{
               margin: '24px 16px',
               padding: 24,
-              minHeight: 280,
+              minHeight: 380,
             }}
           >
           <FormView preview={preview} setPreview={setPreview} actions={actions} setActions={setActions}/>
