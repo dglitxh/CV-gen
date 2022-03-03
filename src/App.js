@@ -2,7 +2,6 @@ import React from "react";
 import {useState} from 'react'
 import { Layout, Menu, notification } from 'antd';
 import FormView from './components/FormView'
-
 import {
   MenuUnfoldOutlined,
   MenuFoldOutlined,
@@ -11,10 +10,6 @@ import {
   UploadOutlined,
 } from '@ant-design/icons';
 const { Header, Sider, Content } = Layout;
-
-
-
-
 
 const App = (props) => {
   const [preview, setPreview] = useState(false)
@@ -38,8 +33,6 @@ if(showNotif){
    setShowNotif(false)
  })()
 }
-
-
 
   return(
     <div>
@@ -76,7 +69,6 @@ if(showNotif){
               onClick: toggle,
             })}
           </Header>
-
           <Content
             className="site-layout-background"
             style={{
@@ -89,11 +81,8 @@ if(showNotif){
           </Content>
         </Layout>
       </Layout>
-
-
     </div>
   )
-
 }
 
 export default App;
