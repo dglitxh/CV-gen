@@ -2,6 +2,7 @@ import React from "react";
 import {useState} from 'react'
 import { Layout, Menu, notification } from 'antd';
 import FormView from './components/FormView'
+import './index.css'
 import {
   MenuUnfoldOutlined,
   MenuFoldOutlined,
