@@ -29,7 +29,7 @@ if(showNotif){
      key: '77xd',
      duration: 8,
      description:
-       'For an Optimal experience use phone in Landscape or use a PC',
+       'For an optimal experience use phone in Landscape Mode or use a PC',
    });
    setShowNotif(false)
  })()
